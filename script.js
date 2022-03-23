@@ -20,9 +20,22 @@ function criarBotao () {
         let input = document.querySelector('input');
         let li = document.createElement('li');
         let ol = document.querySelector('#lista-tarefas');
+        li.className = 'item'
         li.innerText = input.value;
         ol.appendChild(li);
         input.value = '';
     }
 }
 criarBotao ();
+
+
+//requisito 7 
+function mudarCorItem () {
+    let li = document.querySelectorAll('.item');
+    let ol = document.querySelector('#lista-tarefas');
+    ol.addEventListener('click', evento);
+    function evento () {
+        event.target.style.backgroundColor = 'gray'
+    }
+}
+mudarCorItem ();
