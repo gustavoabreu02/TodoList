@@ -31,11 +31,30 @@ criarBotao ();
 
 //requisito 7 
 function mudarCorItem () {
-    let li = document.querySelectorAll('.item');
     let ol = document.querySelector('#lista-tarefas');
     ol.addEventListener('click', evento);
     function evento () {
+        let li = document.querySelectorAll('.item');
+        for (let i = 0; i < li.length; i += 1) {
+            li[i].style.backgroundColor = 'white'
+        }
         event.target.style.backgroundColor = 'gray'
+        ol.style.backgroundColor = 'white'
     }
 }
 mudarCorItem ();
+
+//requisito 9
+function riscaItem () {
+    let ol = document.querySelector('#lista-tarefas');
+        ol.addEventListener('dblclick', evento2);
+        function evento2 () {
+            if (event.target.className == 'item completed') {
+                event.target.className = 'item'
+            } else if (event.target.className == 'item') {
+                event.target.className = 'item completed'
+            } 
+        }
+    
+}
+riscaItem ();
