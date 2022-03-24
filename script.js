@@ -58,3 +58,18 @@ function riscaItem () {
     
 }
 riscaItem ();
+
+//requisito 10 
+function apagaTudo () {
+    let button = document.createElement('button');
+    button.id = 'apaga-tudo';
+    button.innerText = 'Apagar Tudo'
+    main.appendChild(button)
+    button.addEventListener('click', evento3);
+    function evento3 () {
+    let section = document.querySelector('#lista-tarefas').innerHTML = '';
+
+    }
+}
+apagaTudo ();
+
