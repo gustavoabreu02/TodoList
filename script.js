@@ -91,3 +91,38 @@ function removerFinalizados () {
 }
 removerFinalizados()
 
+//requisito 12 
+function salvarTarefas () {
+    let button = document.createElement('button');
+    button.id = 'salvar-tarefas';
+    button.innerText = 'Salvar Tarefas'
+    main.appendChild(button);
+    button.addEventListener('click', evento5);
+    function evento5 () {
+    let li = document.querySelectorAll('.item');
+    for (let i = 0; i < li.length; i += 1) {
+        localStorage.setItem("valor", li[i]);
+    dataGet();
+        }
+    }
+}
+salvarTarefas ();
+
+//requisito 14
+function removerSelecionados () {
+    let button = document.createElement('button');
+    button.id = 'remover-selecionado';
+    button.innerText = 'Remover Selecionados'
+    main.appendChild(button);
+    button.addEventListener('click', evento6);
+    function evento6 () {
+        let li = document.querySelectorAll('.item');
+        for (let i = 0; i < li.length; i += 1) {
+            if (li[i].style.backgroundColor == 'gray') {
+                li[i].remove();
+            }
+        }
+        }
+}
+removerSelecionados ();
+
