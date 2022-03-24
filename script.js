@@ -73,3 +73,21 @@ function apagaTudo () {
 }
 apagaTudo ();
 
+//requisito 11 
+function removerFinalizados () {
+    let button = document.createElement('button');
+    button.id = 'remover-finalizados';
+    button.innerText = 'Remover Finalizados'
+    main.appendChild(button);
+    button.addEventListener('click', evento4);
+    function evento4 () {
+        let li = document.querySelectorAll('.item');
+        for (let i = 0; i < li.length; i += 1) {
+            if (li[i].className == 'item completed') {
+                li[i].remove();
+            }
+        }
+        }
+}
+removerFinalizados()
+
