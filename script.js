@@ -92,22 +92,75 @@ function removerFinalizados () {
 removerFinalizados()
 
 //requisito 12 
-function salvarTarefas () {
-    let button = document.createElement('button');
-    button.id = 'salvar-tarefas';
-    button.innerText = 'Salvar Tarefas'
-    main.appendChild(button);
-    button.addEventListener('click', evento5);
+    let ol = document.querySelector('#lista-tarefas');
+    let button1 = document.createElement('button');
+    button1.id = 'salvar-tarefas';
+    button1.innerText = 'Salvar Tarefas'
+    main.appendChild(button1);
+    button1.addEventListener('click', evento5);
     function evento5 () {
     let li = document.querySelectorAll('.item');
-    for (let i = 0; i < li.length; i += 1) {
-        localStorage.setItem("valor", li[i]);
-    dataGet();
-        }
+    for (let i2 = 0; i2 < li.length; i2 += 1) {
+    localStorage.setItem('valor' + i2 + '', ol.innerHTML);
+    localStorage.setItem('vezes', li.length)
+     }
+    }
+    function salvarTarefas () {
+    let vezes = localStorage.getItem('vezes')
+    let ol = document.querySelector('#lista-tarefas');
+    for (let i = 0; i < vezes; i += 1) {
+    let as = localStorage.getItem('valor' + i + '')
+    ol.innerHTML = as
+   
     }
 }
-salvarTarefas ();
 
+//requisito 13
+function moverCima () {
+    let li = document.querySelectorAll('.item');
+    let ol = document.querySelector('#lista-tarefas');
+    let button = document.createElement('button')
+    button.id = 'mover-cima'
+    button.innerText = '⇈'
+    main.appendChild(button);
+    button.addEventListener('click', evento7)
+    function evento7 () {
+        let li = document.querySelectorAll('.item');
+    for (let i = 0; i < li.length; i += 1) {
+        if (li[i].style.backgroundColor == 'gray') {
+            let guardar = li[i].innerText
+            li[i].innerText = li[i - 1].innerText
+            li[i - 1].innerText = guardar
+            li[i - 1].style.backgroundColor = 'gray'
+            li[i].style.backgroundColor = 'white'
+        }
+    }
+ }
+}
+moverCima ()
+
+function moverBaixo () {
+    let li = document.querySelectorAll('.item');
+    let ol = document.querySelector('#lista-tarefas');
+    let button = document.createElement('button')
+    button.id = 'mover-baixo'
+    button.innerText = '⇊'
+    main.appendChild(button);
+    button.addEventListener('click', evento8)
+    function evento8 () {
+        let li = document.querySelectorAll('.item');
+    for (let i = 0; i < li.length; i += 1) {
+        if (li[i].style.backgroundColor == 'gray') {
+            let guardar = li[i].innerText
+            li[i].innerText = li[i + 1].innerText
+            li[i + 1].innerText = guardar
+            li[i + 1].style.backgroundColor = 'gray'
+            li[i].style.backgroundColor = 'white'
+        }
+    }
+ }
+}
+moverBaixo ();
 //requisito 14
 function removerSelecionados () {
     let button = document.createElement('button');
@@ -126,3 +179,4 @@ function removerSelecionados () {
 }
 removerSelecionados ();
 
+salvarTarefas ()
