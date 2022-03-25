@@ -110,8 +110,7 @@ removerFinalizados()
     let ol = document.querySelector('#lista-tarefas');
     for (let i = 0; i < vezes; i += 1) {
     let as = localStorage.getItem('valor' + i + '')
-    ol.innerHTML = as
-   
+    ol.innerHTML = as 
     }
 }
 
@@ -127,7 +126,7 @@ function moverCima () {
     function evento7 () {
         let li = document.querySelectorAll('.item');
     for (let i = 0; i < li.length; i += 1) {
-        if (li[i].style.backgroundColor == 'gray') {
+        if (li[i].style.backgroundColor == 'gray' && i - 1 >= 0) {
             let guardar = li[i].innerText
             li[i].innerText = li[i - 1].innerText
             li[i - 1].innerText = guardar
@@ -149,8 +148,8 @@ function moverBaixo () {
     button.addEventListener('click', evento8)
     function evento8 () {
         let li = document.querySelectorAll('.item');
-    for (let i = 0; i < li.length; i += 1) {
-        if (li[i].style.backgroundColor == 'gray') {
+    for (let i = li.length - 1; i >= 0; i -= 1) {
+        if (li[i].style.backgroundColor == 'gray' && li.length - 1 >= i + 1) {
             let guardar = li[i].innerText
             li[i].innerText = li[i + 1].innerText
             li[i + 1].innerText = guardar
